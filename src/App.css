@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+#root {
+  margin:0;
+  /* text-align: center; */
+}
+.scrollbar-track-sky-500::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scrollbar-track-sky-500::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-color, #c7bebe);
+}
+
+.scrollbar-track-sky-500::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color, #7d0cd4);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbar-track-color, #928f8f);
+}
