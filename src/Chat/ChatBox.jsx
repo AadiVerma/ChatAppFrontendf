@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Image from '../assets/signinimage.png';
+import Image from '../assets/man.png';
 import { getuserDataForChat } from "../SignIn/Helper/helper";
 import { MdAttachFile } from "react-icons/md";
 import { IoIosSend } from "react-icons/io";
@@ -74,13 +74,14 @@ const ChatBox = ({ chat, currentUser, flag, setSendMessage, recieveMessage,onlin
     
     
     const userName = userData ? (userData[0]?.firstName || userData[0]?.username) : '';
+    const profile=userData ? (userData[0]?.profile):'';
 
     return (
         <div className={`bg-purple-500 relative min-w-[100%]`}>
             {/* User details */}
             <div className='flex gap-5 bg-purple-600 p-5'>
                 {/* User profile image */}
-                <img src={userData?.profile ? userData.profile : Image} className='rounded-full w-[5%] bg-purple-500 ' />
+                <img src={profile!=''?profile: Image} className='rounded-full w-[5%] bg-purple-500 ' />
                 <div className=''>
                     <h1 className='text-md font-semibold'>{userName}</h1>
                     <div className='flex gap-2'>

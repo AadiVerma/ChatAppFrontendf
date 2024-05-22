@@ -66,8 +66,13 @@ function App() {
   });
   const sendMail = async () => {
     try {
-      await Contact({ FullName, EmailAddress: email, MobileNo: mobileNo, EmailSubject: subject, Message: text });
-      Success();
+      if(localStorage.getItem("username")){
+        await Contact({ FullName, EmailAddress: email, MobileNo: mobileNo, EmailSubject: subject, Message: text });
+        Success();
+      }
+      else{
+        WrongContact();
+      }
     } catch (error) {
       WrongContact();
     }
@@ -155,7 +160,10 @@ function App() {
                     <a href="#Connect"><div className="justify-center text-center font-bold text-lg border-2 rounded-lg border-purple-500 p-3 hover:bg-purple-500 m-2  cursor-pointer">Connect</div></a>
                   </div>
                   <div>
-                    <div className="justify-center text-center font-bold text-lg border-2 rounded-lg border-purple-500 p-3 hover:bg-purple-500 m-2  cursor-pointer" onClick={handleLogOut}>Log Out</div>
+                  {token == null ?
+                <button className='justify-center text-center font-bold text-lg border-2 rounded-lg border-purple-500 w-[90%] p-3 hover:bg-purple-500 m-2  cursor-pointer' onClick={login} >Login</button>
+                : <div className="justify-center text-center font-bold text-lg border-2 rounded-lg border-purple-500 p-3 hover:bg-purple-500 m-2  cursor-pointer" onClick={handleLogOut}>Log Out</div>}
+                   
                   </div>
 
                 </nav>

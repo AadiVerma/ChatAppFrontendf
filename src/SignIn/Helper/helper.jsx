@@ -1,13 +1,13 @@
 import axios from 'axios';
 import {jwtDecode} from 'jwt-decode';
-axios.defaults.baseURL = 'http://localhost:8080'
+axios.defaults.baseURL = 'https://chatappbackend-ul27.onrender.com'
 
 // to  get username from Token
 export async function getUsername(){
   const token=localStorage.getItem('token');
   if(!token) return Promise.reject('Cannot Find Token');
   const decodedToken = jwtDecode(token);
-  return decodedToken;
+  return decodedToken;      
 }
 
 export async function authenticate({username}){
@@ -87,9 +87,9 @@ export async function UpdateUser(response){
     try {
      
         const token=localStorage.getItem('token');
-        
+
         const data=await axios.put('/api/updateUser',response,{headers:{"Authorization":`Bearer ${token}`}});
-       
+        localStorage.setItem("Profile",response.profile);
         return Promise.resolve({data});
     } catch (error) {
         return Promise.reject({error:"Couldn't update user"});

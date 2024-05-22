@@ -1,5 +1,5 @@
 import { getuserDataForChat } from '../SignIn/Helper/helper';
-import Image from '../assets/signinimage.png'
+import Image from '../assets/man.png'
 import { useState,useEffect } from 'react';
 export default function ChatTemplate({data,currentUser,setClick,online}) {
   console.log(online);
@@ -10,7 +10,6 @@ export default function ChatTemplate({data,currentUser,setClick,online}) {
           try {
             const data=await getuserDataForChat({id:userId});
             setUserData(data);
-            // console.log(data);
           } catch (error) {
             console.error(error);
           }
@@ -19,7 +18,7 @@ export default function ChatTemplate({data,currentUser,setClick,online}) {
     },[currentUser,data])
     return (
         <div className='flex justify-start border-b-2 pt-[3%] pb-[0%]  gap-5 pl-[5%]' onClick={()=>setClick(data)}>
-            <img src={userdata?.profile?userdata.profile:Image} className='rounded-full w-[23%] bg-purple-500 mb-[4%]'/>
+            <img src={userdata[0]?.profile?userdata[0].profile:Image} className='rounded-full w-[23%] bg-purple-500 mb-[4%]'/>
             <div className='text-start'>
                 <h1 className='text-lg font-bold text-gray-900'>{userdata[0]?.firstName || userdata[0]?.username}</h1>
                 <div className='flex gap-1'>

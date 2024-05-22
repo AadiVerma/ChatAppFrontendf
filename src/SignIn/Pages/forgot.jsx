@@ -9,10 +9,19 @@ export default function Recovery() {
     const navigate=useNavigate();
     
     useEffect(()=>{
-        generateOTP(username).then((otp)=>{
-            if(otp) return toast.success('OTP has been sent to your email address');
-            return toast.error('Problem While Generating OTP');
-        })
+      const generate = async () => {
+        try {
+            const otp = await generateOTP(username);
+            if (otp) {
+                toast.success('OTP has been sent to your email address');
+            } else {
+                toast.error('Problem While Generating OTP');
+            }
+        } catch (error) {
+            toast.error('Problem While Generating OTP');
+        }
+    };
+       generate();
     },[username]);
 
     async function onSubmit(e){

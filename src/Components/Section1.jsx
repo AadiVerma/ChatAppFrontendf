@@ -21,7 +21,7 @@ export default function Section1({ image, text, location ,heading ,headingtext,n
         className={"absolute bottom-0  w-[100%] bg-purple-800 h-[90%] md:h-[50%] pt-5 rounded-3xl  text-center transition-all duration-500 z-50 opacity-0 ease-in-out group-hover:opacity-85"}
       >
       <h1 className='text-3xl font-black '>{headingtext}</h1>
-        <p className="text-xl font-extrabold p-4">{text}</p>
+        <p className="md:text-xl font-extrabold p-4">{text}</p>
           <button onClick={handesubmit} className="bg-purple-950 p-2 hover:bg-[#39184e] font-extrabold h-16 w-52 rounded-lg cursor-pointer z-50">Click Here</button>
       </div>
     </div>
